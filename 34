@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& n, int target) {
+        int l= 0, r= n.size()-1;
+        if(n.size()==0) return {-1,-1};
+        while(l<=r){
+            int m = (l+r)/2;
+            if(n[m]==target){
+                l=m;r=m;
+                while(l-1>=0 && n[l-1]==target)l--;
+                while(r+1 < n.size()&& n[r+1]==target)r++;
+                return {l,r};
+            }
+            if(n[m]<target) l=m+1;
+            else r= m-1;
+        }
+        return {-1,-1};
+    }
+};
