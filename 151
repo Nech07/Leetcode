@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n = s.size()-1,i;
+        string ans="";
+        for(i=n;i>=0; i--){
+            if(s[i]==' ')continue;
+            break;
+        }
+        while(i>=0){
+            if(i>0 &&s[i]==' ' && s[i-1]!=' ')ans +=' ';
+            else if(s[i]!=' '){
+                int end = i;
+                while(i> 0 && s[i-1]!=' '){
+                    i--;
+                }
+                ans+=s.substr(i,end-i+1);
+            }
+            i--;
+        }
+        return ans;
+    }
+};
