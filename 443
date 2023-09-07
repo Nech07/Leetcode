@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int n= chars.size();
+        int k=0,i=0;
+        while(i<n){
+                int c=1;
+                while(i+1<n && chars[i+1]==chars[i]){
+                    i++;c++;
+                }
+                chars[k]=chars[i];k++;
+                if(c>1){
+                    vector<int> digits;
+                    while(c>0){
+                        digits.push_back(c%10);
+                        c/=10;
+                    }
+                    reverse(digits.begin(), digits.end());
+                    for(int j=0; j< digits.size(); j++,k++){
+                        chars[k]='0'+digits[j];
+                    }
+                }
+            }
+            i++;
+        }
+        return k;
+    }
+};
